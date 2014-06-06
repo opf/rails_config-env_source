@@ -42,7 +42,9 @@ is equivalent to setting the following environment variable:
 
 Put this into your Gemfile:
 
-    gem 'rails_config-env_source', :git => 'https://github.com/finnlabs/rails_config-env_source', :branch => 'dev'
+```ruby
+gem 'rails_config-env_source', :git => 'https://github.com/finnlabs/rails_config-env_source', :branch => 'dev'
+```
 
 ## Configuration
 
@@ -51,7 +53,7 @@ To use these sources, configure your application, e.g. in `config/environment.rb
 ```ruby
 require 'rails_config/sources/env_source'
 
-Settings.add_source! RailsConfig::Sources::ENVSource.new
+Settings.add_source! RailsConfig::Sources::EnvSource.new
 Settings.reload!
 ```
 
@@ -61,7 +63,7 @@ If you also want to use the multiline source with `ML_SETTINGS` as prefix instea
 require 'rails_config/sources/env_source'
 require 'rails_config/sources/multiline_env_source'
 
-Settings.add_source! RailsConfig::Sources::ENVSource.new
-Settings.add_source! RailsConfig::Sources::MultilineENVSource.new('ML_SETTINGS')
+Settings.add_source! RailsConfig::Sources::EnvSource.new
+Settings.add_source! RailsConfig::Sources::MultilineEnvSource.new('ML_SETTINGS')
 Settings.reload!
 ```
