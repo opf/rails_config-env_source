@@ -67,3 +67,9 @@ Settings.add_source! RailsConfig::Sources::EnvSource.new
 Settings.add_source! RailsConfig::Sources::MultilineEnvSource.new('ML_SETTINGS')
 Settings.reload!
 ```
+
+## License
+
+Copyright (C) 2014 Finn GmbH
+
+This plugin is licensed under the GNU GPL v3. See [doc/GPL.txt](doc/GPL.txt) for details.
