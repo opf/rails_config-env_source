@@ -30,10 +30,16 @@ module RailsConfig
       attr_accessor :prefix
       attr_accessor :aliases
 
-      def initialize(prefix = 'SETTINGS', include_prefix_in_path = false, aliases = {})
+      def initialize(
+        prefix: 'SETTINGS',
+        include_prefix_in_path: false,
+        yaml_values: true,
+        aliases: {}
+      )
         @prefix = prefix
         @aliases = Hash[aliases.map { |k, v| [k, v.downcase] }]
         @include_prefix_in_path = include_prefix_in_path
+        @yaml_values = yaml_values
       end
 
       def load
@@ -69,7 +75,11 @@ module RailsConfig
       end
 
       def get_value(value)
-        value
+        if yaml_values? && defined?(YAML)
+          YAML.load value
+        else
+          value
+        end
       end
 
       def substitute_alias(path_segment)
@@ -86,6 +96,10 @@ module RailsConfig
 
       def include_prefix_in_path?
         @include_prefix_in_path
+      end
+
+      def yaml_values?
+        @yaml_values
       end
     end
   end
